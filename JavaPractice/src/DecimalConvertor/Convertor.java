@@ -71,9 +71,9 @@ public class Convertor {
 	    
 	  //下面代码计算小数部分的二进制
 	    tempNumberDecimal = decimalPart;
-	    int reminder,i=1;
+	    int reminder, i=1;
 	    do {
-			reminder = (int) Math.floor(tempNumberDecimal/(1/Math.pow((double)operator, i)));
+			reminder = (int) Math.floor(tempNumberDecimal/(1/Math.pow((double)operator,i)));
 			switch (reminder) {
 			case 10: {				
 				resultStringDecimal = resultStringDecimal+"A";
@@ -112,7 +112,11 @@ public class Convertor {
 			//求余数，将其作为下一次运算的基数
 			tempNumberDecimal = tempNumberDecimal-(1/Math.pow((double)operator, i))*reminder;
 			
-			i++;  //i自增1，进行下一位的运算
+			//operator *=operator;  //operator自乘一次，增加一次幂
+			i++; //i用于控制输入位数，避免出现一直除不尽的结果
+			if(i>20) {
+				break;
+			}
 		} while (tempNumberDecimal > 0);
 	    
 	    //判断结果的小数部分是否为0，如果为0，直接输出整数部分，否则输出整体
