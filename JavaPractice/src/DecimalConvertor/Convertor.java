@@ -1,14 +1,18 @@
 package DecimalConvertor;
 
+//import java.math.BigInteger;
+
 public class Convertor {
 	
 	private String numberEnteringString;  //定义一个私有字符变量
 	private int operator;
+	//private BigInteger bigIntegerOperator;
 	
 	//自定义构造器
 	public Convertor(String numberEnteringString, int operator) {
 		this.numberEnteringString = numberEnteringString;
 		this.operator = operator;
+		//this.bigIntegerOperator = BigInteger.valueOf(operator);
 	}
 	public String Convert() {
 		String resultStringDecimal = "", resultStringInteger = "";
@@ -74,6 +78,10 @@ public class Convertor {
 	    int reminder, i=1;
 	    do {
 			reminder = (int) Math.floor(tempNumberDecimal/(1/Math.pow((double)operator,i)));
+	    	
+	    	//BigInteger bigIntegerOperator = BigInteger.valueOf(operator).pow(i);
+	    	
+			//reminder = (int) Math.floor(tempNumberDecimal/(new BigInteger("1").divide(bigIntegerOperator)));
 			switch (reminder) {
 			case 10: {				
 				resultStringDecimal = resultStringDecimal+"A";
