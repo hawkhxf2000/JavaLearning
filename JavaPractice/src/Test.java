@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
 //import java.util.Arrays;
 
 //import java.util.ArrayList;
@@ -7,26 +10,25 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] x = new int[50];
-		x[0] = 0;
-		x[1] =0;
-		for(int i=2;i<x.length;i++)
-		  x[i] = 1;
-		int i,t;
-		for(i=2;i<8;i++) 
-			if(x[i]!=0) {
-				System.out.print(i+"  ");
-				t = 2 * i;
-				while(t<50) {
-					x[t]=0;
-					t+=i;
-				}
+		int temp; 
+		int [] theArray =new int [5];
+		Scanner myScanner=new Scanner(System.in);
+		System.out.println("Please enter 5 numbers:");
+		for ( int i=0; i<theArray.length;i++)
+			theArray[i]= myScanner.nextInt(); 
+
+		for(int i=0;i<theArray.length - 1;i++) {
+			for (int  j=i+1; j<theArray.length; j++) {
+				if (theArray[i]>theArray[j]) {
+					temp =theArray[i]; 
+					theArray[i] = theArray[j];
+					theArray[j] = temp; 
+				} 
 			}
-		System.out.println();
-		for(i=2;i<x.length;i++) {
-			if(x[i]!=0)
-				System.out.println(i);
 		}
+
+		System.out.println(Arrays.toString(theArray));
 	}
 }
+
 
